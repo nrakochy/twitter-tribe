@@ -4,11 +4,14 @@ require 'time'
 class DataRecordFormatter
 
   def convert_twitter_results_to_db_format(twitter_results)
+    twitter_ids = extract_twitter_ids_from_external_results(twitter_results)
     time_stamp = Time.now
     format_twitter_records(twitter_ids, time_stamp)
   end
 
   def extract_twitter_ids_from_external_results(twitter_results)
+    cursor_results_arr = twitter_results.map{|cursor_result| cursor_result[:ids] }
+    cursor_results_arr.flatten
   end
 
   def format_twitter_records(twitter_ids, time_stamp)
