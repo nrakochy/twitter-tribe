@@ -10,6 +10,11 @@ class TwitterTribe < Sinatra::Base
 
   get '/twitter_api_call' do
     username = "trunkclub"
-    ExternalApiInteractor.new.get_all_twitter_followers(username).to_json
+    #ExternalApiInteractor.new.get_all_twitter_followers(username).to_json
+  end
+
+  get '/database_records' do
+    username = "trunkclub"
+    DatabaseInteractor.new(username).get_all_db_records
   end
 end
