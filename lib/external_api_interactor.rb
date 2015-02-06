@@ -1,5 +1,5 @@
-require 'json'
 require_relative 'twitter_rest_client'
+require_relative 'data_record_formatter'
 
 class ExternalApiInteractor
 
@@ -8,8 +8,8 @@ class ExternalApiInteractor
     reformat_twitter_results(twitter_ids)
   end
 
-  def execute_twitter_api_call
-    TwitterRestClient.new.get_all_twitter_followers(username).to_json
+  def execute_twitter_api_call(username)
+    TwitterRestClient.new.get_all_twitter_followers(username)
   end
 
   def reformat_twitter_results(twitter_ids)

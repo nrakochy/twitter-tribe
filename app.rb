@@ -1,3 +1,4 @@
+require 'json'
 require 'sinatra/base'
 require_relative 'lib/external_api_interactor'
 
@@ -8,7 +9,7 @@ class TwitterTribe < Sinatra::Base
   end
 
   get '/twitter_api_call' do
-    username = "sandimetz"
-    ExternalApiInteractor.new.get_all_twitter_followers(username)
+    username = "trunkclub"
+    ExternalApiInteractor.new.get_all_twitter_followers(username).to_json
   end
 end
