@@ -1,4 +1,5 @@
 require 'mongo'
+require 'json'
 
 class MongoDatabaseWrapper
   include Mongo
@@ -12,6 +13,8 @@ class MongoDatabaseWrapper
   end
 
   def find_all_records
+    all_records = @collection.find().to_a
+    all_records.to_json
   end
 
   def close
