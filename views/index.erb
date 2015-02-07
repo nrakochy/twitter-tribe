@@ -9,13 +9,8 @@
   </div>
   <script>
     $(document).ready(function(){
-      $.get('/twitter_api_call', function(result){
-        console.log(result)
-    });
-      $.get('/database_records', function(result){
-        console.log(result)
-    });
-
+      $.when($.get('/twitter_api_call'), $.get('/database_records').done(function()){
+            $.get('/compare_external_to_db')
     });
   </script>
 </body>

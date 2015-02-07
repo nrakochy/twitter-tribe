@@ -13,6 +13,6 @@ class ExternalApiInteractor
   end
 
   def reformat_twitter_results(twitter_ids)
-    DataRecordFormatter.new.convert_twitter_results_to_db_format(twitter_ids)
+    DataRecordFormatter.new.extract_twitter_ids_from_external_results(twitter_ids)
   end
 end

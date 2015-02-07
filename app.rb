@@ -5,17 +5,22 @@ require_relative 'lib/database_interactor'
 
 
 class TwitterTribe < Sinatra::Base
+  attr_reader :external_twitter_ids, :db_twitter_ids
   get '/' do
     erb :index
   end
 
   get '/twitter_api_call' do
     username = "trunkclub"
-    ExternalApiInteractor.new.get_all_twitter_followers(username).to_json
+    @external_twitter_ids = ExternalApiInteractor.new.get_all_twitter_followers(username).to_json
   end
 
   get '/database_records' do
     username = "trunkclub"
-    DatabaseInteractor.new(username).get_all_db_records
+    @db_twitter_ids = DatabaseInteractor.new(username).get_all_db_records
+  end
+
+  get '/compare_external_to_db' do
+    DataRecordsEvaluator.new(@external_twitter_ids, @db_twitter_ids).find_followers_who_unfollow
   end
 end
