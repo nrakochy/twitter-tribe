@@ -1,4 +1,4 @@
-require 'mongo_database_wrapper'
+require_relative 'mongo_database_wrapper'
 
 class DatabaseInteractor
 
