@@ -23,11 +23,12 @@ class DataRecordFormatter
   end
 
   def parse_db_records(db_records)
-    db_records.map{|record| parse_individual_db_record(record) }
+    parsed_records = JSON.parse(db_records.to_json)
+    parsed_records.map{|record| extract_twitter_id_from_db_record(record) }
   end
 
-  def parse_individual_db_record(record)
-    JSON.parse(record)
+  def extract_twitter_id_from_db_record(record)
+    record["twitter_id"]
   end
 
 end
