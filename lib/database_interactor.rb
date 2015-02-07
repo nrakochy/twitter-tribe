@@ -9,7 +9,9 @@ class DatabaseInteractor
 
   def get_all_db_records
     db_records = find_all_db_records
-    reformat_db_records(db_records)
+    formatted_records = reformat_db_records(db_records)
+    close_db
+    formatted_records
   end
 
   def find_all_db_records
@@ -20,7 +22,7 @@ class DatabaseInteractor
     DataRecordFormatter.new.parse_db_records(records)
   end
 
-  def close
+  def close_db
     @db.close
   end
 
