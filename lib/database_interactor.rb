@@ -2,7 +2,7 @@ require_relative 'mongo_database_wrapper'
 
 class DatabaseInteractor
 
-  def intialize(collection_name)
+  def initialize(collection_name)
     @db = MongoDatabaseWrapper.new(collection_name)
   end
 
