@@ -23,7 +23,8 @@ class DataRecordFormatter
   end
 
   def parse_db_records(db_records)
-    parsed_records = JSON.parse(db_records.to_json)
+    json_records = db_records.to_json
+    parsed_records = JSON.parse(json_records)
     parsed_records.map{|record| extract_twitter_id_from_db_record(record) }
   end
 

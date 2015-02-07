@@ -1,12 +1,12 @@
-require_relative '../lib/data_records_evaluator'
+require_relative '../lib/data_record_evaluator'
 
-describe DataRecordsEvaluator do
+describe DataRecordEvaluator do
   let(:external_records){ [1,2,3,4,5] }
   let(:db_records){ [1,2,4,7,8] }
   let(:overlapping_records){ [1,2,4] }
   let(:unique_external_records){ [3,5] }
   let(:unique_db_records){ [7,8] }
-  let(:evaluator){ DataRecordsEvaluator.new(external_records, db_records) }
+  let(:evaluator){ DataRecordEvaluator.new(external_records, db_records) }
 
   describe "#find_overlapping_followers" do
     it 'returns an array of the intersection between external records and db records' do
