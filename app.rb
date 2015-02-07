@@ -2,7 +2,7 @@ require 'json'
 require 'sinatra/base'
 require_relative 'lib/external_api_interactor'
 require_relative 'lib/database_interactor'
-require_relative 'lib/data_records_evaluator'
+require_relative 'lib/data_record_evaluator'
 
 
 class TwitterTribe < Sinatra::Base
