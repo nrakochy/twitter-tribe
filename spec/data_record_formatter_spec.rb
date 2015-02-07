@@ -10,6 +10,7 @@ describe DataRecordFormatter do
   let(:formatted_result2){ {twitter_id: twitter_id2, created_date: time_stamp}}
   let(:db_record1){ {"_id":{"$oid": "54d57df85964c9829add73c6"},"twitter_id": twitter_id1, "created_date": time_stamp} }
   let(:db_record2){ {"_id":{"$oid": "54d57df95964c9829add73c7"},"twitter_id": twitter_id2, "created_date": time_stamp} }
+  let(:db_records){ [db_record1, db_record2].to_json }
 
   describe '#format_individual_id' do
     it 'converts id_number and time stamp to hash' do
@@ -30,9 +31,9 @@ describe DataRecordFormatter do
     end
   end
 
-  describe '#parse_individual_db_record' do
+  describe '#parse_db_records' do
     it 'returns an array of twitter_id numbers from db records' do
-      expect(formatter.parse_db_records([db_record1, db_record2])).to eq([twitter_id1, twitter_id2])
+      expect(formatter.parse_db_records(db_records)).to eq([twitter_id1, twitter_id2])
     end
   end
 
