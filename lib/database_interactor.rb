@@ -17,7 +17,7 @@ class DatabaseInteractor
   end
 
   def reformat_db_records(records)
-    DataRecordFormatter.new.parse_db_records
+    DataRecordFormatter.new.parse_db_records(records)
   end
 
   def close

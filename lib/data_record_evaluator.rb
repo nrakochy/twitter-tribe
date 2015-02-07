@@ -1,5 +1,5 @@
 
-class DataRecordsEvaluator
+class DataRecordEvaluator
   attr_reader :overlapping_followers
 
   def initialize(external_records, db_records)
