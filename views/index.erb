@@ -9,12 +9,10 @@
   </div>
   <script>
     $(document).ready(function(){
-    $.when( 
+    $.when(
         $.get( '/twitter_api_call' ),
         $.get( '/database_records' )
-        ).then(function(result1, result2){
-            $.get('/compare_external_to_db')
-        });
+        ).then($.get('/compare_external_to_db'), console.log("ERROR"))
     });
   </script>
 </body>
