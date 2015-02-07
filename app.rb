@@ -22,6 +22,6 @@ class TwitterTribe < Sinatra::Base
   end
 
   get '/compare_external_to_db' do
-    DataRecordsEvaluator.new(@external_twitter_ids, @db_twitter_ids).find_followers_who_unfollow
+    DataRecordEvaluator.new(@external_twitter_ids, @db_twitter_ids).find_followers_who_unfollow
   end
 end
