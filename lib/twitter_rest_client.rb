@@ -1,4 +1,5 @@
 require 'twitter'
+require 'json'
 
 class TwitterRestClient
 
@@ -39,4 +40,26 @@ class TwitterRestClient
     result[:next_cursor]
   end
 
+  def get_twitter_user_profiles(twitter_ids)
+    results = []
+    rate_limit = 100
+    collections = create_rate_limit_collection(twitter_ids, rate_limit)
+    collections.map { |id_set| results << retrieve_set_of_user_info(id_set) }
+    results.flatten.to_json
+  end
+
+  def retrieve_set_of_user_info(id_set)
+    users = @client.users(id_set)
+    users.map{ |record| record.attrs }
+  end
+
+  def create_rate_limit_collection(twitter_ids, rate_limit)
+    collection = []
+    while !twitter_ids.empty?
+      id_set = twitter_ids.take(rate_limit)
+      collection << id_set
+      twitter_ids -= id_set
+    end
+    collection
+  end
 end

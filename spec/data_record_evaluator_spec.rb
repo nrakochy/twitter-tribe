@@ -1,5 +1,6 @@
 require_relative '../lib/data_record_evaluator'
 
+
 describe DataRecordEvaluator do
   let(:external_records){ [1,2,3,4,5] }
   let(:db_records){ [1,2,4,7,8] }

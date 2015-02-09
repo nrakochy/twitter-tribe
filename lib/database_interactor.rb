@@ -1,10 +1,12 @@
 require_relative 'mongo_database_wrapper'
 require_relative 'data_record_formatter'
 
+
 class DatabaseInteractor
 
   def initialize(collection_name)
     @db = MongoDatabaseWrapper.new(collection_name)
+    @formatter = DataRecordFormatter.new
   end
 
   def get_all_db_records
@@ -19,7 +21,7 @@ class DatabaseInteractor
   end
 
   def reformat_db_records(records)
-    DataRecordFormatter.new.parse_db_records(records)
+    @formatter.parse_db_records(records)
   end
 
   def close_db

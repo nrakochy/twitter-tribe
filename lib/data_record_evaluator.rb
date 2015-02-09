@@ -1,3 +1,4 @@
+require 'json'
 
 class DataRecordEvaluator
   attr_reader :overlapping_followers
