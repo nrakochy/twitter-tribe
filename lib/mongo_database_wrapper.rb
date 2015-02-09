@@ -6,6 +6,7 @@ class MongoDatabaseWrapper
 
   def initialize(collection_name)
     mongo_uri = ENV['MONGOLAB_URI']
+    mongo_uri = "mongodb://trunkclub:trunkclub@ds041671.mongolab.com:41671/heroku_app33774995"
     db_name = mongo_uri[%r{/([^/\?]+)(\?|$)}, 1]
     @client = MongoClient.from_uri(mongo_uri)
     @db = @client.db(db_name)
@@ -13,8 +14,7 @@ class MongoDatabaseWrapper
   end
 
   def find_all_records
-    all_records = @collection.find().to_a
-    all_records.to_json
+    @collection.find().to_a
   end
 
   def close
